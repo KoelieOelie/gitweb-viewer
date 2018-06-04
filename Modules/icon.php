@@ -17,7 +17,7 @@ function _Button($text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""){
 			$ButtonBuffer="<input type='submit' value='' id='".$icon."'></input>";
 			break;
 		default:
-			$ButtonBuffer="<i id='icon' class='WARNING'></i> De opzie '$type' is nog in de maak. <i id='icon' class='WARNING'></i>";
+			$ButtonBuffer="<i id='icon' class='WARNING'></i> The choice '$type' is still in the making. So wait a moment for pls <i id='icon' class='WARNING'></i>";
 	}
 	return $ButtonBuffer;
 	
