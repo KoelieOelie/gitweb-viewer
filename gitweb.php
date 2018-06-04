@@ -50,8 +50,7 @@ function _LoadWebpage($string,$GitHub="https://raw.githubusercontent.com/MrCrayf
 
 	if($AllouwdDomain=="C"){
 		//print_r(get_headers($URL, 1));
-		$ChekCeck=get_headers($URL, 1);
-		if($ChekCeck[0]="HTTP/1.1 200 OK"){
+		if(get_headers($URL, 1)=="HTTP/1.1 200 OK"){
 			$data=file($URL);
 		}else{
 			$data=file("error.gitweb");
