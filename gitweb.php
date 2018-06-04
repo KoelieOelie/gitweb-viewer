@@ -96,7 +96,6 @@ function _RenderWebpage($data){
 );
 			switch ($cleanedstr) {
 				case "footer":
-					//if()
 						$input=array();
 						for($y=1;$y<=4;$y++){
 							if(isset($data[$i+$y])){
@@ -106,7 +105,6 @@ function _RenderWebpage($data){
 						$dataBuffer.=Footer($input);
 					break;
 				case "header":
-					//if()
 						$input=array();
 						for($y=1;$y<=4;$y++){
 							if(isset($data[$i+$y])){
@@ -116,7 +114,6 @@ function _RenderWebpage($data){
 						//$dataBuffer.=HeaderFun($input);
 					break;
 				case "banner":
-					//if()
 						$input=array();
 						for($y=1;$y<=2;$y++){
 							if(isset($data[$i+$y])){
@@ -126,7 +123,6 @@ function _RenderWebpage($data){
 						$dataBuffer.=banner($input);
 					break;
 				case "paragraph":
-					//if()
 						$input=array();
 						for($y=1;$y<=3;$y++){
 							if(isset($data[$i+$y])){
@@ -136,7 +132,7 @@ function _RenderWebpage($data){
 						$dataBuffer.=paragraph($input);
 					break;
 				case "divider":
-					//if()
+					
 						$input=array();
 						for($y=1;$y<=2;$y++){
 							if(isset($data[$i+$y])){
@@ -145,8 +141,7 @@ function _RenderWebpage($data){
 						}
 						//$dataBuffer.=paragraph($input);
 					break;
-				case "navigation":
-					//if()
+				case "navigation":					
 						$input=array();
 						for($y=1;$y<=30;$y++){
 							if(isset($data[$i+$y])){
@@ -158,7 +153,7 @@ function _RenderWebpage($data){
 						$dataBuffer.=nav($input);
 					break;
 				default:
-					$dataBuffer.="<span>".$cleanedstr.":Deze Module is nog niet tovegoegt aan deze php bestand, Sorry. werk er nog aan ;-)</span>"."<br>";
+					$dataBuffer.="<span>".$cleanedstr.":This Module is not yet adding to this php file, Sorry. work on it ;-)</span>"."<br>";
 			}
 		}
 	}
