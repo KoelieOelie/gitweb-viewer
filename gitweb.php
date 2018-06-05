@@ -48,11 +48,11 @@ function _LoadWebpage($string,$GitHub="https://raw.githubusercontent.com/MrCrayf
 
 	if($AllouwdDomain=="C"){
 		//print_r(get_headers($URL, 1));
-		if(get_headers($URL, 1)=="HTTP/1.1 200 OK"){
+		//if(get_headers($URL, 1)=="HTTP/1.1 200 OK"){
 			$data=file($URL);
-		}else{
-			$data=file("error.gitweb");
-		}
+		//}else{
+			//$data=file("error.gitweb");
+		//}
 		return _RenderWebpage($data);
 	}else{
 		if(isset($browser)){
