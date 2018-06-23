@@ -1,4 +1,4 @@
-<?php 
+<?php
 include"Domain.php";
 include"getwebsite.php";
 include"Render.php";
@@ -10,18 +10,15 @@ include"./Modules/Banner.php";
 include"./Modules/Paragraph.php";
 include"./Modules/Nav.php";
 include"Modules/icon.php";
-if(isset($_GET["url"])){
-	$url=$_GET["url"];
-}
 
 function _LoadWebpage($string,$GitHub="https://raw.githubusercontent.com/MrCrayfish/GitWeb-Sites/master/:extension/:Domain/:directoryindex"){
 	$SubDir="";
 	$urlin = explode(".", $string);
 	$domain=$urlin[0];
-	print_r($urlin);
+	//print_r($urlin);
 	$urlsplit = explode("/", $urlin[1]);
 	$urlsplitValue=sizeof($urlsplit)-1;
-	print_r($urlsplit);
+	//print_r($urlsplit);
 	$extension=$urlsplit[0];
 	$AllouwdDomain=_Domains($extension);
 	if(startsWith($domain,"webagive/p/")){
@@ -30,9 +27,8 @@ function _LoadWebpage($string,$GitHub="https://raw.githubusercontent.com/MrCrayf
 		$HTPPDIR=str_replace("index.php","",$_SERVER['PHP_SELF']);
 		echo$_SERVER['PHP_SELF'];
 		$GitHub="http://".$_SERVER['SERVER_NAME'].$HTPPDIR."WebAgive/:extension/:Domain/:directoryindex";
-	}elseif(startsWith($domain,"brouwser")){
-		$browser=$urlsplit;
-		echo$domain;
+	}elseif(startsWith($extension,"brouwser")){
+		$browser=$urlin[0];
 	}
 	if($urlsplitValue!=0){
 		for($i=1;$i<=$urlsplitValue;$i++){
@@ -42,7 +38,7 @@ function _LoadWebpage($string,$GitHub="https://raw.githubusercontent.com/MrCrayf
 	}else{
 		$URL=str_replace(":directory","",$GitHub);
 	}
-	
+
 	$URL=str_replace(":extension",$extension,$URL);
 	$URL=str_replace(":Domain",$domain,$URL);
 
@@ -56,7 +52,7 @@ function _LoadWebpage($string,$GitHub="https://raw.githubusercontent.com/MrCrayf
 		return _RenderWebpage($data);
 	}else{
 		if(isset($browser)){
-			return Browser($Browser);		
+			return Browser($browser);
 		}
 	}
 }
@@ -71,7 +67,7 @@ function endsWith($haystack, $needle)
 {
     $length = strlen($needle);
 
-    return $length === 0 || 
+    return $length === 0 ||
     (substr($haystack, -$length) === $needle);
 }
 ?>

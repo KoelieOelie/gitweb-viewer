@@ -1,8 +1,22 @@
 <?php
-function Browser(){
+function Browser($input){
+switch ($input) {
+	case 'Demo':
+		$data=file("https://pastebin.com/raw/TETGeHJu");
+		return _RenderWebpage($data);
+		break;
+	case 'Help':
+			return GetWebsite();
+			break;
+	default:
+		// code...
+		break;
+}
+}
+function GetWebsite(){
 $data=file('https://raw.githubusercontent.com/MrCrayfish/GitWeb-Sites/master/official/welcome/websites/index');
-print_r($data);
-$out="<h1>accessible websites on gitweb program on the MrCrayfish Device Mod</h1>";
+//print_r($data);
+$out="<h1>".parseMinecraftColors("accessible websites on gitweb program on the MrCrayfish Device Mod")."</h1>";
 $websites=explode('\n',$data[30]);
 $av=sizeof($websites)-1;
 for($i=0;$i<=$av-1;$i++){
@@ -13,23 +27,7 @@ for($i=0;$i<=$av-1;$i++){
 		}
 	}
 }
-print_r($websites);
-return $out;
-}
-function GetWebsite(){
-$data=file('https://raw.githubusercontent.com/MrCrayfish/GitWeb-Sites/master/official/welcome/websites/index');
-print_r($data);
-$out="<h1>accessible websites on gitweb program on the MrCrayfish Device Mod</h1>";
-$websites=explode('\n',$data[30]);
-$av=sizeof($websites);
-for($i=0;$i<=$av;$i++){
-	if(isset($websites[$i])){
-		if($websites[$i]==""){}else{
-			$out.=_Button($websites[$i],"ARROW_RIGHT","LinkWebsite-$i",$websites[$i]);
-		}
-	}
-}
-print_r($websites);
+//print_r($websites);
 return $out;
 }
 //$text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""

@@ -1,4 +1,4 @@
-<?php 
+<?php
 function _Button($text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""){
 	switch ($type) {
 		case "Link":
@@ -20,14 +20,14 @@ function _Button($text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""){
 			$ButtonBuffer="<i id='icon' class='WARNING'></i> The choice '$type' is still in the making. So wait a moment for pls <i id='icon' class='WARNING'></i>";
 	}
 	return $ButtonBuffer;
-	
+
 }
 function _icon($url,$namesurl="CurrentIcons.txt",$width=10,$height=10,$dx=190,$dy=50){
 	$icons=file($namesurl);
 	$split_values="";
 	$buffer="i#icon,input[type=submit] {
 		    display: inline-block;
-			background-image: url(https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png);
+			background-image: url($url);
 			background-repeat: no-repeat;
 			width: 		".$width."px;
 			height: 	".$height."px;
@@ -80,10 +80,10 @@ for ($y=0; $y <= $rows; $y++) {
 //echo "<pre>";
 	//print_r($row);
 	//echo "</pre>";
-	
-	
+
+
 	return $buffer;
-	
-	
+
+
 }
 ?>

@@ -52,7 +52,7 @@ function _RenderWebpage($data){
 						$dataBuffer.=paragraph($input);
 					break;
 				case "divider":
-					
+
 						$input=array();
 						for($y=1;$y<=2;$y++){
 							if(isset($data[$i+$y])){
@@ -61,7 +61,7 @@ function _RenderWebpage($data){
 						}
 						//$dataBuffer.=paragraph($input);
 					break;
-				case "navigation":					
+				case "navigation":
 						$input=array();
 						for($y=1;$y<=30;$y++){
 							if(isset($data[$i+$y])){
@@ -72,6 +72,12 @@ function _RenderWebpage($data){
 						}
 						$dataBuffer.=nav($input);
 					break;
+					case "text":
+							$input=array();
+									if(startsWith($data[$i+1],"text=")){
+									$dataBuffer.="<span id='txt'>".parseMinecraftColors(str_replace("text=","",$data[$i+1]))."</span>";
+								}
+						break;
 				default:
 					$dataBuffer.="<span>".$cleanedstr.":This Module is not yet adding to this php file, Sorry. work on it ;-)</span>"."<br>";
 			}
