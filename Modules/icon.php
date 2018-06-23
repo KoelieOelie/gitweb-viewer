@@ -1,16 +1,17 @@
 <?php
 function _Button($text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""){
+	$txtout="<span>".$text."</span>";
 	switch ($type) {
 		case "Link":
 			if($href!="#top"){
 				if($icon!=""){
-				$ButtonBuffer="<a href='index.php?url=".$href."'><i id='icon' class='".$icon."'></i>$text</a>";
+				$ButtonBuffer="<a href='index.php?url=".$href."'><i id='icon' class='".$icon."'></i>$txtout</a>";
 				}else{
-					$ButtonBuffer="<a href='index.php?url=".$href."'>$text</a>";
+					$ButtonBuffer="<a href='index.php?url=".$href."'>$txtout</a>";
 				}
 			}
 			else{
-				$ButtonBuffer="<a href='".$href."'><i id='icon' class='".$icon."'></i>$text</a>";
+				$ButtonBuffer="<a href='".$href."'><i id='icon' class='".$icon."'></i>$txtout</a>";
 			}
 			break;
 		case "Submit":
@@ -22,12 +23,42 @@ function _Button($text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""){
 	return $ButtonBuffer;
 
 }
-function _icon($url,$namesurl="CurrentIcons.txt",$width=10,$height=10,$dx=190,$dy=50){
+function _ButtonDummy($text="",$icon="",$type="Submit",$id="IHaveNoId",$href=""){
+	$txtout="<span>".$text."</span>";
+	switch ($type) {
+		case "Link":
+			if($href!="#top"){
+				if($icon!=""){
+				$ButtonBuffer="<a href='index.php?url=".$href."'><i id='icon' class='".$icon."'></i>$txtout</a>";
+				}else{
+					$ButtonBuffer="<a href='index.php?url=".$href."'>$txtout</a>";
+				}
+			}
+			else{
+				$ButtonBuffer="<a href='".$href."'><i id='icon' class='".$icon."'></i>$txtout</a>";
+			}
+			break;
+		case "Submit":
+			$ButtonBuffer="<input type='submit' value='' id='".$icon."'></input>";
+			break;
+		default:
+			$ButtonBuffer="<i id='icon' class='WARNING'></i> The choice '$type' is still in the making. So wait a moment for pls <i id='icon' class='WARNING'></i>";
+	}
+	return $ButtonBuffer;
+
+}
+function _icon($url,$namesurl="CurrentIcons.txt",$size){
+	$size=$size+1;
+	$width=10*$size;
+	$height=10*$size;
+	$dx=190*$size;
+	$dy=50*$size;
+	//echo '<h1>'.$size.$dx.$dy.'</h1>';
 	$icons=file($namesurl);
 	$split_values="";
 	$buffer="i#icon,input[type=submit] {
 		    display: inline-block;
-			background-image: url($url);
+			background-image: url('PNGRes.php?Size=".($size-1)."&url=$url');
 			background-repeat: no-repeat;
 			width: 		".$width."px;
 			height: 	".$height."px;

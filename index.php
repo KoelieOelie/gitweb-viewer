@@ -7,7 +7,8 @@ if (isset($_POST["url"])) {
 <html>
 <head>
 <style>
-<?php echo(_icon("./Asetes/textures/gui/icons_290.png","Current Icons.txt",14,14,190,50));
+<?php //https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png
+echo(_icon("./Asetes/textures/gui/icons_290.png","Current Icons.txt",2));
 ?>
 @font-face {
     font-family: Minecraft;
@@ -66,6 +67,7 @@ div#Banner h1{
 }
 a {
 	text-decoration: none;
+
 }
 <?php if ($url=="Demo.brouwser"): ?>
 #contander{
@@ -94,23 +96,41 @@ form{
     top: 80px;
     left: 50px;
 }
+form a, form input[type=Submit]{
+  height: 54px;
+    width: 54px;}
 nav a{
   display: inline-block;
 position: relative;
 top: 0px;
-/* left: 0px; */
 margin: 9px;
 height: 54px;
-width: fit-content;
+width: 140px;
 background-color: aliceblue;
+margin-right: 3px;
+margin-left: 10px;
+color: #fff;
 }
+nav a i{
+  position: relative;
+    top: 7px;
+    left: 7px;
+    opacity: 0.5;
+      filter: alpha(opacity=50);
+}
+nav a span{
+  position: relative;
+    top: -4px;
+    left: 13px;
+    font-size: 30px;}
+
 </style>
 </head>
 <body style="font-family: Minecraft;">
 <div id="contander">
 <form method="post">
 <input id="URLBAR" name="url" value="<?php echo$url;?>" style=""></input>
-<?php echo(_Button("","ARROW_RIGHT","Submit","HomePage","welcome.official")._Button("","HOME","Link","HomePage","welcome.official"));?>
+<?php //echo(_Button("","ARROW_RIGHT","Submit","Subbje","")._Button("","HOME","Link","HomePage","welcome.official"));?>
 </form>
 <div id="frame" style="background-color:#ffa50096;"><?php
 echo(_LoadWebpage($url)); ?></div>

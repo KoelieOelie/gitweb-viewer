@@ -9,7 +9,8 @@ switch ($input) {
 			return GetWebsite();
 			break;
 	default:
-		// code...
+		$data=file("error.gitweb");
+		return _RenderWebpage($data);
 		break;
 }
 }
