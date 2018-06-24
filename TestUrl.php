@@ -51,15 +51,13 @@ class URL
     $this->domain=$s1[0];
     $extension=explode("/", $s1[1]);
     $this->extension=$extension[0];
+    $this->directory=str_replace($this->extension."/","",$s1[1])."/";
     $this->github=str_replace(":domain",$this->domain,$this->github);
     $this->github=str_replace(":extension",$this->extension,$this->github);
     $this->github=str_replace(":directory",$this->directory,$this->github);
   }
   function MakeUrl($newGitHubUrl){
     $this->github=$newGitHubUrl;
-    $this->github=str_replace(":domain",$this->domain,$this->github);
-    $this->github=str_replace(":extension",$this->extension,$this->github);
-    $this->github=str_replace(":directory",$this->directory,$this->github);
   }
   public function GetGitHubUrl()
   {
