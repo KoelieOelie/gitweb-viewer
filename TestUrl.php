@@ -58,6 +58,9 @@ class URL
   }
   function MakeUrl($newGitHubUrl){
     $this->github=$newGitHubUrl;
+    $this->github=str_replace(":domain",$this->domain,$this->github);
+    $this->github=str_replace(":extension",$this->extension,$this->github);
+    $this->github=str_replace(":directory",$this->directory,$this->github);
   }
   public function GetGitHubUrl()
   {
