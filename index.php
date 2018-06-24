@@ -6,6 +6,7 @@ if (isset($_POST["url"])) {
 <?php include"gitweb.php";?><!DOCTYPE html>
 <html>
 <head>
+  <title>GitWeb - <?php echo $_COOKIE["url"];?></title>
 <style>
 <?php //https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png
 echo(_icon("https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png","Current Icons.txt",2));
@@ -47,6 +48,7 @@ footer h1{
 div#Banner{
 	background-repeat: no-repeat;
   height: 150px;
+  background-size: contain;
 }
 div#Banner h1{
   font-weight: normal;
@@ -69,7 +71,7 @@ a {
 	text-decoration: none;
 
 }
-<?php if ($url=="Demo.brouwser"): ?>
+<?php if ($_COOKIE["url"]=="Demo.brouwser"): ?>
 #contander{
 background-image: url(./Asetes/textures/gui/demo.jpg);
   height: 663px;
@@ -129,10 +131,10 @@ nav a span{
 <body style="font-family: Minecraft;">
 <div id="contander">
 <form method="post">
-<input id="URLBAR" name="url" value="<?php echo$url;?>" style=""></input>
+<input id="URLBAR" name="url" value="<?php echo$_COOKIE["url"];?>" style=""></input>
 <?php //echo(_Button("","ARROW_RIGHT","Submit","Subbje","")._Button("","HOME","Link","HomePage","welcome.official"));?>
 </form>
 <div id="frame" style="background-color:#ffa50096;"><?php
-echo(_LoadWebpage($url)); ?></div>
+echo(_LoadWebpage($_COOKIE["url"])); ?></div>
 </body>
 </html>
