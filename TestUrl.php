@@ -1,20 +1,4 @@
 <?php
-function startsWith($haystack, $needle)
-{
-     $length = strlen($needle);
-     return (substr($haystack, 0, $length) === $needle);
-}
-
-function endsWith($haystack, $needle)
-{
-    $length = strlen($needle);
-
-    return $length === 0 ||
-    (substr($haystack, -$length) === $needle);
-}
-
-
-
 if (isset($_GET['Debug'])) {
   print_r($_POST);
   ?>
@@ -62,13 +46,32 @@ class URL
     $this->github=str_replace(":extension",$this->extension,$this->github);
     $this->github=str_replace(":directory",$this->directory,$this->github);
   }
+  function extension($extension,$extensions=array("official","app","wiki","craft","web")){
+  	//print_r(in_array($Domain,$Domains));
+  	if(in_array($extension,$extensions)=="1"){
+  		return true;
+  	}else{return false;}
+  }
+  function extension($extension,$extensions=array("official","app","wiki","craft","web")){
+  	//print_r(in_array($Domain,$Domains));
+  	if(in_array($extension,$extensions)=="1"){
+  		return true;
+  	}else{return false;}
+  }
   public function GetGitHubUrl()
   {
     return $this->github;
   }
-}
+  function startsWith($haystack, $needle)
+  {
+       $length = strlen($needle);
+       return (substr($haystack, 0, $length) === $needle);
+  }
 
-
-
-
-?>
+  function endsWith($haystack, $needle)
+  {
+      $length = strlen($needle);
+      return $length === 0 ||
+      (substr($haystack, -$length) === $needle);
+  }
+} ?>
