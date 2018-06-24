@@ -9,7 +9,7 @@ if (isset($_POST["url"])) {
   <title>GitWeb - <?php echo $_COOKIE["url"];?></title>
   <link rel="shortcut icon" href="https://raw.githubusercontent.com/MrCrayfish/DeviceMod-CertifiedApps/master/assets/cdm/gitweb/icon.png">
 <style>
-<?php 
+<?php
 echo(_icon("https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png","Current Icons.txt",2));
 ?>
 @font-face {
@@ -135,7 +135,9 @@ nav a span{
 <input id="URLBAR" name="url" value="<?php echo$_COOKIE["url"];?>" style=""></input>
 <?php //echo(_Button("","ARROW_RIGHT","Submit","Subbje","")._Button("","HOME","Link","HomePage","welcome.official"));?>
 </form>
-<div id="frame" style="background-color:#ffa50096;"><?php
+<div id="frame" style="background-color:#ffa50096;">
+<span id="top"></span>
+<?php
 echo(_LoadWebpage($_COOKIE["url"])); ?></div>
 </body>
 </html>
