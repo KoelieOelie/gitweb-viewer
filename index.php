@@ -7,8 +7,9 @@ if (isset($_POST["url"])) {
 <html>
 <head>
   <title>GitWeb - <?php echo $_COOKIE["url"];?></title>
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/MrCrayfish/DeviceMod-CertifiedApps/master/assets/cdm/gitweb/icon.png">
 <style>
-<?php //https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png
+<?php 
 echo(_icon("https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png","Current Icons.txt",2));
 ?>
 @font-face {
