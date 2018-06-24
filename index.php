@@ -8,7 +8,7 @@ if (isset($_POST["url"])) {
 <head>
 <style>
 <?php //https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png
-echo(_icon("./Asetes/textures/gui/icons_290.png","Current Icons.txt",2));
+echo(_icon("https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png","Current Icons.txt",2));
 ?>
 @font-face {
     font-family: Minecraft;
