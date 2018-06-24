@@ -14,6 +14,7 @@ if (isset($_GET['Debug'])) {
         <?php if ($_POST["url"]!=""){
           $url=new URL($_POST["url"]);
           echo $url->GetGitHubUrl();
+          echo $url->theme;
         } ?>
         <input type="text" name="url" value=""><button type="submit" name="Test">Test de url</button>
       </form>
@@ -29,6 +30,7 @@ class URL
   private $extension="";
   private $directory="";
   private $github="https://raw.githubusercontent.com/MrCrayfish/GitWeb-Sites/master/:extension/:domain/:directoryindex";
+  public $theme="website";
   function __construct($url)
   {
     $s1 = explode(".", $url);
@@ -39,6 +41,7 @@ class URL
     $this->github=str_replace(":domain",$this->domain,$this->github);
     $this->github=str_replace(":extension",$this->extension,$this->github);
     $this->github=str_replace(":directory",$this->directory,$this->github);
+    $this->CheckUrl();
   }
   function MakeUrl($newGitHubUrl){
     $this->github=$newGitHubUrl;
@@ -46,11 +49,16 @@ class URL
     $this->github=str_replace(":extension",$this->extension,$this->github);
     $this->github=str_replace(":directory",$this->directory,$this->github);
   }
-  function extension($extension,$extensions=array("official","app","wiki","craft","web")){
-  	//print_r(in_array($Domain,$Domains));
-  	if(in_array($extension,$extensions)=="1"){
-  		return true;
-  	}else{return false;}
+  function CheckUrl(){
+  	if($this->extension($this->extension)!=true){
+      if($this->extension=="brouwser"){
+        $this->theme="gitweb";
+        $this->MakeUrl("./Data/:extension/:domain/index");
+      }else {
+        $this->theme="notfound";
+        $this->MakeUrl("./Data/error/404D");
+      }
+    }
   }
   function extension($extension,$extensions=array("official","app","wiki","craft","web")){
   	//print_r(in_array($Domain,$Domains));
