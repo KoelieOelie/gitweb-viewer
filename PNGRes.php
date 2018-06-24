@@ -20,14 +20,15 @@ $imagex=$source_imagex*$size;
 $imagey=$source_imagey*$size;
 
 $dest_image = imagecreatetruecolor($imagex, $imagey);
+
+imagecopyresampled($dest_image, $source_image, 0, 0, 0, 0, $imagex,
+$imagey, $source_imagex, $source_imagey);
 if (function_exists('imagealphablending'))
 {
 				imagealphablending($dest_image, false);
 		imagesavealpha($dest_image, true);
 	}
-imagecopyresampled($dest_image, $source_image, 0, 0, 0, 0, $imagex,
-$imagey, $source_imagex, $source_imagey);
-header("Content-Type: image/jpeg");
+header("Content-Type: image/png");
 imagepng($dest_image,NULL,9);
 }
 
