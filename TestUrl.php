@@ -8,17 +8,17 @@ if (isset($_GET['Debug'])) {
     <head>
       <meta charset="utf-8">
       <title>Testing tesing</title>
+      <?php if ($_POST["url"]!=""){
+        $url=new URL($_POST["url"]);
+        echo $url->GetGitHubUrl();
+        ?>
+        <link rel="shortcut icon" href="<?php echo $url->icon; ?>">
+
+      <?php } ?>
+
     </head>
     <body>
       <form class="" action="TestUrl.php?Debug" method="post">
-        <?php if ($_POST["url"]!=""){
-          $url=new URL($_POST["url"]);
-          echo $url->GetGitHubUrl();
-          ?>
-
-          <img src="<?php echo $url->icon; ?>" alt="">
-
-        <?php } ?>
         <input type="text" name="url" value=""><button type="submit" name="Test">Test de url</button>
       </form>
     </body>
