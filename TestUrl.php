@@ -52,11 +52,20 @@ class URL
   function CheckUrl(){
   	if($this->extension($this->extension)!=true){
       if($this->extension=="brouwser"){
-        $this->theme="gitweb";
+        $this->theme="gitwebgui";
         $this->MakeUrl("./Data/:extension/:domain/index");
       }else {
-        $this->theme="notfound";
+        $this->theme="notExapet";
         $this->MakeUrl("./Data/error/404D");
+      }
+    }else {
+      $array = get_headers($this->github);
+      //Print_r($array);
+      $string = $array[0];
+      if(!strpos($string,"200"))
+        //als het niet besiaat geef dan één error
+        $this->theme="notFound";
+        $this->MakeUrl("./Data/error/404");
       }
     }
   }
