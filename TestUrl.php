@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['Debug'])) {
-  print_r($_POST);
+  //print_r($_POST);
   ?>
 
   <!DOCTYPE html>
@@ -42,9 +42,11 @@ class URL
   private $github="https://raw.githubusercontent.com/MrCrayfish/GitWeb-Sites/master/:extension/:domain/:directoryindex";
   public $theme="website";
   public $icon="";
+  public $Respons="";
+  public $extensions;
   function __construct($url)
   {
-    if($url!=""){
+    if($url==""){
       $url="welcome.official";
     }
     $s1 = explode(".", $url);
@@ -53,9 +55,13 @@ class URL
     $urlsplitValue=sizeof($extension)-1;
     $this->extension=$extension[0];
     if($urlsplitValue!=0){
-  		for($i=1;$i<=$urlsplitValue;$i++){
-  			$SubDir.=$extension[$i]."/";
-  		}
+      if($urlsplitValue!=1){
+  		  for($i=1;$i<=$urlsplitValue;$i++){
+  			   $SubDir.=$extension[$i]."/";
+  		  }
+      }else {
+        $SubDir=$extension[1]."/";
+      }
   		$this->directory=$SubDir;
   	}else{
   		$this->directory="";
@@ -67,6 +73,7 @@ class URL
   }
   public function GetData(){
     $data=file($this->github);
+    return$data;
 }
 
 
@@ -78,22 +85,26 @@ class URL
         $this->theme="gitwebgui";
         $this->MakeUrl("./Data/:extension/:domain/index");
         $this->cicon("ok");
+        $this->Respons="Load Brouwser";
       }else {
         $this->theme="notExapet";
         $this->MakeUrl("./Data/error/404D");
         $this->cicon("404");
+        $this->Respons="Extension Not Suported";
       }
     }
     if($this->extension($this->extension)==true){
       $array = get_headers($this->github);
-      Print_r($array);
+      //Print_r($array);
       $string = $array[0];
       if(strpos($string,"200")){
         $this->cicon("ok");
+        $this->Respons="Load Ok";
       }if(strpos($string,"404")) {
         $this->theme="notFond";
         $this->MakeUrl("./Data/error/404");
         $this->cicon("404");
+        $this->Respons="404";
       }
     }
   }
@@ -118,6 +129,11 @@ class URL
   }
     function extension($extension,$extensions=array("official","app","wiki","craft","web")){
   	//print_r(in_array($Domain,$Domains));
+    $this->extensions=$extensions[0];
+    for ($i=1; $i < sizeof($extensions)-2; $i++) {
+      $this->extensions.=",".$extensions[$i];
+    }
+    $this->extensions.=" En ".$extensions[sizeof($extensions)-1];
   	if(in_array($extension,$extensions)=="1"){
   		return true;
   	}else{return false;}
@@ -130,20 +146,4 @@ class URL
     $github=str_replace(":directory",$this->directory,$github);
     return $github;
   }
-  function startsWith($haystack, $needle)
-  {
-       $length = strlen($needle);
-       return (substr($haystack, 0, $length) === $needle);
-  }
-
-  function endsWith($haystack, $needle)
-  {
-      $length = strlen($needle);
-      return $length === 0 ||
-      (substr($haystack, -$length) === $needle);
-  }
-
-
-
-
 } ?>

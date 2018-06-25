@@ -1,13 +1,13 @@
 <?php $colordir="./Asetes/systeem/color";
-if (isset($_POST["url"])) {
-  $url=$_POST["url"];
-}
+include"./TestUrl.php";
+$class=new URL($_COOKIE["url"]);
 ?>
-<?php include"gitweb.php";?><!DOCTYPE html>
+<?php include"gitweb.php";?>
+<!DOCTYPE html>
 <html>
 <head>
   <title>GitWeb - <?php echo $_COOKIE["url"];?></title>
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/MrCrayfish/DeviceMod-CertifiedApps/master/assets/cdm/gitweb/icon.png">
+  <link rel="shortcut icon" href="<?php echo $class->icon;?>">
 <style>
 <?php
 echo(_icon("https://raw.githubusercontent.com/MrCrayfish/MrCrayfishDeviceMod/master/src/main/resources/assets/cdm/textures/gui/icons.png","Current Icons.txt",2));
@@ -126,18 +126,39 @@ nav a span{
     top: -4px;
     left: 13px;
     font-size: 30px;}
-
+    img {
+      image-rendering: pixelated;
+    }
+    #infotext{color: #fff;
+    display: block;
+    position: relative;
+    top: -28px;
+    left: 51px;
+    font-size: 30px;}
 </style>
 </head>
 <body style="font-family: Minecraft;">
-<div id="contander">
+<div id="contander" class="<?php echo$class->theme ;?>">
 <form method="post">
 <input id="URLBAR" name="url" value="<?php echo$_COOKIE["url"];?>" style=""></input>
-<?php //echo(_Button("","ARROW_RIGHT","Submit","Subbje","")._Button("","HOME","Link","HomePage","welcome.official"));?>
+<?php echo(_Button("","ARROW_RIGHT","Submit","Subbje","")._Button("","HOME","Link","HomePage","welcome.official"));?>
 </form>
+<span id="infotext">GitWeb - <?php echo $_COOKIE["url"];?>
+<?php if ($class->Respons!="Extension Not Suported"||$class->Respons!="404"): ?>
+
+<?php else: ?>
+  :-S
+<?php endif; ?>
+</span>
 <div id="frame" style="background-color:#ffa50096;">
 <span id="top"></span>
 <?php
-echo(_LoadWebpage($_COOKIE["url"])); ?></div>
+//print_r($class->GetData());
+$out=str_replace(":CE",$class->extensions,_RenderWebpage($class->GetData()));
+echo($out); ?></div>
+<img src="<?php echo $class->icon;?>" alt="" style="position: relative;
+    top: 507px;
+    left: 238px;
+    width: 47px;">
 </body>
 </html>
