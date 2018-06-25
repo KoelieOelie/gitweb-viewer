@@ -37,6 +37,9 @@ class URL
   public $icon="";
   function __construct($url)
   {
+    if($url!=""){
+      $url="welcome.official";
+    }
     $s1 = explode(".", $url);
     $this->domain=$s1[0];
     $extension=explode("/", $s1[1]);
