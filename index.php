@@ -77,6 +77,11 @@ a {
 background-image: url(./Asetes/textures/gui/Template.png);
   height: 663px;
 }
+<?php else: ?>
+#contander{
+background-image: url(./Asetes/textures/gui/NRJ.png);
+  height: 663px;
+}
 <?php endif; ?>
 #frame{
   position: absolute;
