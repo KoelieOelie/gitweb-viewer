@@ -74,7 +74,7 @@ a {
 }
 <?php if ($_COOKIE["url"]=="Demo.brouwser"): ?>
 #contander{
-background-image: url(./Asetes/textures/gui/demo.jpg);
+background-image: url(./Asetes/textures/gui/Template.png);
   height: 663px;
 }
 <?php endif; ?>
