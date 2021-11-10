@@ -2,7 +2,9 @@ $( document ).ready(function() {
 	var minetip = document.getElementById("minetip-tooltip");
 
 	$(".have_item_in_slot").mouseover(function(event) {
-	  minetip.innerHTML = event.currentTarget.childNodes[1].dataset.tooltip_label;
+		var tooltip="<span>"+event.currentTarget.childNodes[1].dataset.tooltip_label+"</span></br>";
+		tooltip+="<span>"+event.currentTarget.childNodes[1].dataset.tooltip_key+"</span>";
+	  minetip.innerHTML = tooltip;
 	  minetip.classList.add("active");
 	});
 
