@@ -9,8 +9,6 @@ spl_autoload_register(function ($name) {
   }
   if (file_exists($name.'.php')) {
     include_once $name.'.php';
-  }else {
-    echo $name.'.php';
   }
 
 });
